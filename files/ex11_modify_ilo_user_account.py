@@ -13,7 +13,7 @@
  # under the License.
 
 import sys
-from restobject import RestObject
+from _restobject import RestObject
 
 def ex11_modify_ilo_user_account(restobj, ilo_login_name_to_modify, \
                 new_ilo_loginname, new_ilo_username, new_ilo_password, \
@@ -30,17 +30,17 @@ def ex11_modify_ilo_user_account(restobj, ilo_login_name_to_modify, \
                 body = {}
                 body_oemhp = {}
                 body_oemhp_privs = {}
-
+    
                 # if new loginname or password specified
                 if new_ilo_password:
                     body["Password"] = new_ilo_password
                 if new_ilo_loginname:
                     body["UserName"] = new_ilo_loginname
-
+    
                 # if different username specified
                 if new_ilo_username:
                     body_oemhp["LoginName"] = new_ilo_username
-
+    
                 # if different privileges were requested (None = no change)
                 if irc != None:
                     body_oemhp_privs["RemoteConsolePriv"] = irc
@@ -52,7 +52,7 @@ def ex11_modify_ilo_user_account(restobj, ilo_login_name_to_modify, \
                     body_oemhp_privs["UserConfigPriv"] = usercfg
                 if vpr != None:
                     body_oemhp_privs["VirtualPowerAndResetPriv"] = vpr
-
+    
                 # component assembly
                 if len(body_oemhp_privs):
                     body_oemhp["Privileges"] = body_oemhp_privs
@@ -63,23 +63,28 @@ def ex11_modify_ilo_user_account(restobj, ilo_login_name_to_modify, \
                                                                         body)
                 restobj.error_handler(newrsp)
                 return
-
+            
     sys.stderr.write("Account not found\n")
 
 if __name__ == "__main__":
     # When running on the server locally use the following commented values
-    # iLO_host = "blobstore://."
+    # iLO_https_url = "blobstore://."
     # iLO_account = "None"
     # iLO_password = "None"
 
-    #accepts arguments when run
+    # When running remotely connect using the iLO secured (https://) address, 
+    # iLO account name, and password to send https requests
+    # iLO_https_url acceptable examples:
+    # "https://10.0.0.100"
+    # "https://f250asha.americas.hpqcorp.net"
     try:
-        iLO_host = "https://" +str(sys.argv[1])
+        iLO_https_url = "https://" + str(sys.argv[1])
         iLO_account = str(sys.argv[2])
         iLO_password = str(sys.argv[3])
+    
         #Create a REST object
-        REST_OBJ = RestObject(iLO_host, iLO_account, iLO_password)
-        ex11_modify_ilo_user_account(REST_OBJ, "name", "newname", "newusername", "newpassword")
+        REST_OBJ = RestObject(iLO_https_url, iLO_account, iLO_password)
+		ex11_modify_ilo_user_account(REST_OBJ, "name", "newname", "newusername", "newpassword")
 
     except Exception:
         sys.stderr.write("Credentials Error \n")

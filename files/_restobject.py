@@ -1,3 +1,9 @@
+import sys
+import json
+import logging
+from ilorest import AuthMethod, rest_client, ilorest_logger
+
+
 """
 Provides examples of using the HP RESTful API on iLO for common use cases.  This is for tutorial/example purposes only.
 ---------------------------------------------------------------------------------------------------------------------
@@ -68,34 +74,25 @@ Clients should always be prepared for:
 * A client should be tolerant of any set of HTTP headers the service returns
 """
 
-import sys
-import logging
-import json
-from ilorest import AuthMethod, ilorest_logger, redfish_client
-
 #Config logger used by HPE Restful library
-LOGGERFILE = "RedfishApiExamples.log"
+LOGGERFILE = "RestfulApiExamples.log"
 LOGGERFORMAT = "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
 LOGGER = ilorest_logger(LOGGERFILE, LOGGERFORMAT, logging.INFO)
-LOGGER.info("HPE Redfish API examples")
+LOGGER.info("HPE Restful API examples")
 
-class RedfishObject(object):
+
+
+class RestObject(object):
     def __init__(self, host, login_account, login_password):
-        try:
-            self.redfish_client = redfish_client(base_url=host, \
-                      username=login_account, password=login_password, \
-                      default_prefix="/redfish/v1")
-        except:
-            raise
-        self.redfish_client.login(auth=AuthMethod.SESSION)
+        self.rest_client = rest_client(base_url=host, \
+                          username=login_account, password=login_password, \
+                          default_prefix="/rest/v1")
+        self.rest_client.login(auth=AuthMethod.SESSION)
         self.SYSTEMS_RESOURCES = self.ex1_get_resource_directory()
         self.MESSAGE_REGISTRIES = self.ex2_get_base_registry()
 
     def __del__(self):
-        try:
-            self.redfish_client.logout()
-        except AttributeError, excp:
-            pass
+        self.rest_client.logout()
 
     def search_for_type(self, type):
         instances = []
@@ -103,11 +100,10 @@ class RedfishObject(object):
         for item in self.SYSTEMS_RESOURCES["resources"]:
             foundsettings = False
 
-            if "@odata.type" in item and type.lower() in \
-                                                    item["@odata.type"].lower():
+            if type.lower() in item["Type"].lower():
                 for entry in self.SYSTEMS_RESOURCES["resources"]:
-                    if (item["@odata.id"] + "/settings/").lower() == \
-                                                (entry["@odata.id"]).lower():
+                    if (item["href"] + "/settings").lower() == \
+                                                        (entry["href"]).lower():
                         foundsettings = True
 
                 if not foundsettings:
@@ -124,8 +120,7 @@ class RedfishObject(object):
 
         try:
             message = json.loads(response.text)
-            newmessage = message["error"]["@Message.ExtendedInfo"][0]\
-                                                        ["MessageId"].split(".")
+            newmessage = message["Messages"][0]["MessageID"].split(".")
         except:
             sys.stdout.write("\tNo extended error information returned by " \
                                                                     "iLO.\n")
@@ -138,86 +133,83 @@ class RedfishObject(object):
                 for err_entry in self.MESSAGE_REGISTRIES[err_mesg]:
                     if err_entry == newmessage[3]:
                         sys.stdout.write("\tiLO return code %s: %s\n" % (\
-                                 message["error"]["@Message.ExtendedInfo"][0]\
-                                 ["MessageId"], self.MESSAGE_REGISTRIES\
-                                 [err_mesg][err_entry]["Description"]))
+                                   message["Messages"][0]["MessageID"], \
+                                   self.MESSAGE_REGISTRIES[err_mesg][err_entry]\
+                                   ["Description"]))
 
-    def redfish_get(self, suburi):
-        """REDFISH GET"""
-        return self.redfish_client.get(path=suburi)
+    def rest_get(self, suburi):
+        """REST GET"""
+        return self.rest_client.get(path=suburi)
 
-    def redfish_patch(self, suburi, request_body, optionalpassword=None):
-        """REDFISH PATCH"""
+    def rest_patch(self, suburi, request_body, optionalpassword=None):
+        """REST PATCH"""
         sys.stdout.write("PATCH " + str(request_body) + " to " + suburi + "\n")
-        response = self.redfish_client.patch(path=suburi, body=request_body, \
+        response = self.rest_client.patch(path=suburi, body=request_body, \
                                             optionalpassword=optionalpassword)
         sys.stdout.write("PATCH response = " + str(response.status) + "\n")
 
         return response
 
-    def redfish_put(self, suburi, request_body, optionalpassword=None):
-        """REDFISH PUT"""
+    def rest_put(self, suburi, request_body, optionalpassword=None):
+        """REST PUT"""
         sys.stdout.write("PUT " + str(request_body) + " to " + suburi + "\n")
-        response = self.redfish_client.put(path=suburi, body=request_body, \
+        response = self.rest_client.put(path=suburi, body=request_body, \
                                             optionalpassword=optionalpassword)
         sys.stdout.write("PUT response = " + str(response.status) + "\n")
 
         return response
 
 
-    def redfish_post(self, suburi, request_body):
-        """REDFISH POST"""
+    def rest_post(self, suburi, request_body):
+        """REST POST"""
         sys.stdout.write("POST " + str(request_body) + " to " + suburi + "\n")
-        response = self.redfish_client.post(path=suburi, body=request_body)
+        response = self.rest_client.post(path=suburi, body=request_body)
         sys.stdout.write("POST response = " + str(response.status) + "\n")
 
         return response
 
 
-    def redfish_delete(self, suburi):
-        """REDFISH DELETE"""
+    def rest_delete(self, suburi):
+        """REST DELETE"""
         sys.stdout.write("DELETE " + suburi + "\n")
-        response = self.redfish_client.delete(path=suburi)
+        response = self.rest_client.delete(path=suburi)
         sys.stdout.write("DELETE response = " + str(response.status) + "\n")
 
         return response
-
-
+    
     def ex1_get_resource_directory(self):
-        response = self.redfish_get("/redfish/v1/resourcedirectory/")
+        response = self.rest_get("/rest/v1/resourcedirectory")
         resources = {}
     
         if response.status == 200:
             resources["resources"] = response.dict["Instances"]
             return resources
         else:
-            sys.stderr.write("\tResource directory missing at " \
-                                        "/redfish/v1/resourcedirectory" + "\n")
+            sys.stderr.write("\tResource directory missing at /rest/v1/resource" \
+                                                                "directory" + "\n")
     
     def ex2_get_base_registry(self):
-        response = self.redfish_get("/redfish/v1/Registries/")
+        response = self.rest_get("/rest/v1/Registries")
         messages = {}
-        location = None
         
-        for entry in response.dict["Members"]:
-            if not [x for x in ["/Base/", "/iLO/"] if x in entry["@odata.id"]]:
-                continue
+        identifier = None
+        
+        for entry in response.dict["Items"]:
+            if "Id" in entry:
+                identifier = entry["Id"]
             else:
-                registry = self.redfish_get(entry["@odata.id"])
-            
-            for location in registry.dict["Location"]:  
-                if "extref" in location["Uri"]:
-                    location = location["Uri"]["extref"]
-                else:
-                    location = location["Uri"]
-                reg_resp = self.redfish_get(location)
+                identifier = entry["Schema"].split(".")[0]
+    
+            if identifier not in ["Base", "iLO"]:
+                continue
+    
+            for location in entry["Location"]:  
+                reg_resp = self.rest_get(location["Uri"]["extref"])
     
                 if reg_resp.status == 200:
-                    messages[reg_resp.dict["RegistryPrefix"]] = \
-                                                    reg_resp.dict["Messages"]
+                    messages[identifier] = reg_resp.dict["Messages"]
                 else:
-                    sys.stdout.write("\t" + reg_resp.dict["RegistryPrefix"] + \
-                                            " not found at " + location + "\n")
+                    sys.stdout.write("\t" + identifier + " not found at "\
+                                                + location["Uri"]["extref"] + "\n")
     
         return messages
-

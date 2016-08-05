@@ -13,7 +13,7 @@
  # under the License.
 
 import sys
-from restobject import RestObject
+from _restobject import RestObject
 
 def ex5_enable_secure_boot(restobj, secure_boot_enable, bios_password=None):
     sys.stdout.write("\nEXAMPLE 5: Enable/Disable UEFI Secure Boot\n")
@@ -27,19 +27,23 @@ def ex5_enable_secure_boot(restobj, secure_boot_enable, bios_password=None):
 
 if __name__ == "__main__":
     # When running on the server locally use the following commented values
-    # iLO_host = "blobstore://."
+    # iLO_https_url = "blobstore://."
     # iLO_account = "None"
     # iLO_password = "None"
 
-    #accepts arguments when run
+    # When running remotely connect using the iLO secured (https://) address, 
+    # iLO account name, and password to send https requests
+    # iLO_https_url acceptable examples:
+    # "https://10.0.0.100"
+    # "https://f250asha.americas.hpqcorp.net"
     try:
-        iLO_host = "https://" +str(sys.argv[1])
+        iLO_https_url = "https://" + str(sys.argv[1])
         iLO_account = str(sys.argv[2])
         iLO_password = str(sys.argv[3])
+    
         #Create a REST object
-        REST_OBJ = RestObject(iLO_host, iLO_account, iLO_password)
-        ex5_enable_secure_boot(REST_OBJ, False)
+        REST_OBJ = RestObject(iLO_https_url, iLO_account, iLO_password)
+		ex5_enable_secure_boot(REST_OBJ, False)
 
     except Exception:
         sys.stderr.write("Credentials Error \n")
-

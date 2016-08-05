@@ -1,4 +1,3 @@
-
 # Copyright 2016 Hewlett Packard Enterprise Development LP
  #
  # Licensed under the Apache License, Version 2.0 (the "License"); you may
@@ -15,7 +14,7 @@
 
 import sys
 import urlparse
-from restobject import RestObject
+from _restobject import RestObject
 
 
 def ex14_sessions(restobj, login_account, login_password):
@@ -23,7 +22,7 @@ def ex14_sessions(restobj, login_account, login_password):
     new_session = {"UserName": login_account, "Password": login_password}
     response = restobj.rest_post("/rest/v1/Sessions", new_session)
     restobj.error_handler(response)
-
+    
     if response.status == 201:
         session_uri = response.getheader("location")
         session_uri = urlparse.urlparse(session_uri)
@@ -40,20 +39,23 @@ def ex14_sessions(restobj, login_account, login_password):
 
 if __name__ == "__main__":
     # When running on the server locally use the following commented values
-    # iLO_host = "blobstore://."
+    # iLO_https_url = "blobstore://."
     # iLO_account = "None"
     # iLO_password = "None"
 
-    #accepts arguments when run
+    # When running remotely connect using the iLO secured (https://) address, 
+    # iLO account name, and password to send https requests
+    # iLO_https_url acceptable examples:
+    # "https://10.0.0.100"
+    # "https://f250asha.americas.hpqcorp.net"
     try:
-        iLO_host = "https://" +str(sys.argv[1])
+        iLO_https_url = "https://" + str(sys.argv[1])
         iLO_account = str(sys.argv[2])
         iLO_password = str(sys.argv[3])
-	#Create a REST object
-	REST_OBJ = RestObject(iLO_host, iLO_account, iLO_password)
-	ex14_sessions(REST_OBJ, "admin", "admin123")
+    
+        #Create a REST object
+        REST_OBJ = RestObject(iLO_https_url, iLO_account, iLO_password)
+		ex14_sessions(REST_OBJ, "admin", "admin123")
 
     except Exception:
         sys.stderr.write("Credentials Error \n")
-    
-	    

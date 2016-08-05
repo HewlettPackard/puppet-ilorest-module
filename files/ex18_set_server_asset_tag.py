@@ -13,7 +13,7 @@
  # under the License.
 
 import sys
-from restobject import RestObject
+from _restobject import RestObject
 
 def ex18_set_server_asset_tag(restobj, asset_tag):
     sys.stdout.write("\nEXAMPLE 18: Set Computer Asset Tag\n")
@@ -26,17 +26,22 @@ def ex18_set_server_asset_tag(restobj, asset_tag):
 
 if __name__ == "__main__":
     # When running on the server locally use the following commented values
-    # iLO_host = "blobstore://."
+    # iLO_https_url = "blobstore://."
     # iLO_account = "None"
     # iLO_password = "None"
 
-    #accepts arguments when run
+    # When running remotely connect using the iLO secured (https://) address, 
+    # iLO account name, and password to send https requests
+    # iLO_https_url acceptable examples:
+    # "https://10.0.0.100"
+    # "https://f250asha.americas.hpqcorp.net"
     try:
-        iLO_host = "https://" +str(sys.argv[1])
+        iLO_https_url = "https://" + str(sys.argv[1])
         iLO_account = str(sys.argv[2])
         iLO_password = str(sys.argv[3])
+    
         #Create a REST object
-        REST_OBJ = RestObject(iLO_host, iLO_account, iLO_password)
+        REST_OBJ = RestObject(iLO_https_url, iLO_account, iLO_password)
         ex18_set_server_asset_tag(REST_OBJ, "assettaghere")
 
     except Exception:

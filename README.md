@@ -40,7 +40,7 @@
 
 Use this command to install ilorest:
 
-`puppet module install hpe-ilorest`
+`puppet module install puppetrest-ilorest`
 
 On the node servers, by default, in debian distributions, the ilorest module will install files into the ilorest module path. (/etc/puppetlabs/code/environments/production/modules/ilorest). In Windows, it will install into the C: drive. (C:\ilorest). In RedHat, it installs into Puppet's module path (/etc/puppet/modules/ilorest)
 

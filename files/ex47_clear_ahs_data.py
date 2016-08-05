@@ -1,4 +1,4 @@
-# Copyright 2016 Hewlett Packard Enterprise Development LP
+# Copyright 2016 Hewlett Packard Enterprise Development, LP.
  #
  # Licensed under the Apache License, Version 2.0 (the "License"); you may
  # not use this file except in compliance with the License. You may obtain
@@ -13,24 +13,20 @@
  # under the License.
 
 import sys
-import json
 from _restobject import RestObject
 
-def ex29_set_ilo_ntp_servers(restobj, ntp_servers):
-    sys.stdout.write("\nEXAMPLE 29:  Set iLO's NTP Servers\n")
-    instances = restobj.search_for_type("HpiLODateTime.")
+def ex47_clear_ahs_data(restobj):
+    sys.stdout.write("\nEXAMPLE 47: Clear AHS Data\n")
+    instances = restobj.search_for_type("Manager.")
 
     for instance in instances:
-        response = restobj.rest_get(instance["href"])
+        tmp = restobj.rest_get(instance["href"])
+        body = {"Action": "ClearLog"}
 
-        sys.stdout.write("\tCurrent iLO Date/Time Settings:  " +
-                json.dumps(response.dict["ConfigurationSettings"]) + "\n")
-        sys.stdout.write("\tCurrent iLO NTP Servers:  " +
-                            json.dumps(response.dict["NTPServers"]) + "\n")
-
-        body = {"StaticNTPServers": ntp_servers}
-        response = restobj.rest_patch(instance["href"], body)
+        response = restobj.rest_post(tmp.dict["Oem"]["Hp"]["links"]\
+                                    ["ActiveHealthSystem"]["href"], body)
         restobj.error_handler(response)
+
 if __name__ == "__main__":
     # When running on the server locally use the following commented values
     # iLO_https_url = "blobstore://."
@@ -49,7 +45,7 @@ if __name__ == "__main__":
     
         #Create a REST object
         REST_OBJ = RestObject(iLO_https_url, iLO_account, iLO_password)
-        ex29_set_ilo_ntp_servers(REST_OBJ, ["192.168.0.1", "192.168.0.2"])
+		ex47_clear_ahs_data(REST_OBJ)
 
     except Exception:
         sys.stderr.write("Credentials Error \n")

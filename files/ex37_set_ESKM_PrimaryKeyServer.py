@@ -13,7 +13,7 @@
  # under the License.
 
 import sys
-from restobject import RestObject
+from _restobject import RestObject
 
 def ex37_set_ESKM_PrimaryKeyServer(restobj, PrimaryKeyServerAddress,\
                                PrimaryKeyServerPort):
@@ -31,21 +31,26 @@ def ex37_set_ESKM_PrimaryKeyServer(restobj, PrimaryKeyServerAddress,\
 
 if __name__ == "__main__":
     # When running on the server locally use the following commented values
-    # iLO_host = "blobstore://."
+    # iLO_https_url = "blobstore://."
     # iLO_account = "None"
     # iLO_password = "None"
 
-    PrimaryKeyServerAddress = "10.0.0.100"
-    PrimaryKeyServerPort = "9000"
-
-    #accepts arguments when run
+    # When running remotely connect using the iLO secured (https://) address, 
+    # iLO account name, and password to send https requests
+    # iLO_https_url acceptable examples:
+    # "https://10.0.0.100"
+    # "https://f250asha.americas.hpqcorp.net"
+    eskm_username =  "admin"
+    eskm_password =  "password"
+    eskm_accountgroup =  "group"
     try:
-        iLO_host = "https://" +str(sys.argv[1])
+        iLO_https_url = "https://" + str(sys.argv[1])
         iLO_account = str(sys.argv[2])
         iLO_password = str(sys.argv[3])
+    
         #Create a REST object
-        REST_OBJ = RestObject(iLO_host, iLO_account, iLO_password)
-        ex37_set_ESKM_PrimaryKeyServer(REST_OBJ, PrimaryKeyServerAddress,\
+        REST_OBJ = RestObject(iLO_https_url, iLO_account, iLO_password)
+		ex37_set_ESKM_PrimaryKeyServer(REST_OBJ, PrimaryKeyServerAddress,\
                                PrimaryKeyServerPort)
 
     except Exception:
