@@ -1,0 +1,25 @@
+{
+  "name": "hpe-ilorest",
+  "version": "1.0.0",
+  "author": "hpe",
+  "summary": "Installs and runs ilorest examples",
+  "license": "Apache-2.0",
+  "source": "",
+  "project_page": null,
+  "issues_url": null,
+  "description": "Puppet module for installing the Python ilorest library and showcasing a few examples",
+  "tags": [
+    "python",
+    "ilorest",
+    "hpe",
+    "redfish"
+    ],
+  "operatingsystems_support": [
+    {"operatingsystem": ["Windows","Debian","RHEL"]}
+    ],
+  "dependencies": [
+    {"name":"puppetlabs-stdlib","version_requirement":">= 1.0.0"}
+  ],
+  "data_provider": null
+}
+
