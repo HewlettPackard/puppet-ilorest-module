@@ -13,7 +13,6 @@ iLOrest
 3. [Setup](#setup)
 4. [Installation](#installation)
 5. [Usage](#usage)
-6. [Contributors](#contributors)
 
 Overview
 ===========
@@ -65,8 +64,5 @@ node default {
     ilo_password => 'password
 ```
 
-##Contributors
-
-https://github.com/HewlettPackard/puppet-ilorest-module/graphs/contributors
   [Python iLOrest library]: https://github.com/HewlettPackard/python-iLOrest-library
   [Python]: https://forge.puppet.com/stankevich/python
