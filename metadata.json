@@ -1,36 +1,29 @@
 {
-  "name": "lumbajack-ilorest",
-  "version": "1.0.2",
-  "author": "Hewlett Packard Enterprise Development",
-  "summary": "Installs and runs iLOrest examples",
-  "license": "Apache-2.0",
-  "source": "https://github.com/HewlettPackard/puppet-ilorest-module",
-  "project_page": "https://github.com/HewlettPackard/puppet-ilorest-module",
-  "issues_url": "https://github.com/HewlettPackard/puppet-ilorest-module/issues",
-  "description": "Puppet module for installing the Python iLOrest library and showcasing a few examples",
-  "tags": [
-    "python",
-    "iLOrest",
-    "hpe",
-    "redfish",
-	"restful"
-    ],
-  "operatingsystems_support": [
-    {
-		"operatingsystem": "RedHat",
-	},
-	{
-		"operatingsystem": "Ubuntu",
-	},
-	{
-		"operatingsystem": "Debian",
-	},
-	{
-		"operatingsystem": "Windows",
-	},
-  ],
-  "dependencies": [
-  ],
-  "data_provider": null
+	"name": "lumbajack-ilorest",
+	"version": "1.0.2",
+	"author": "Hewlett Packard Enterprise Development",
+	"summary": "Installs and runs iLOrest examples",
+	"license": "Apache-2.0",
+	"source": "https://github.com/HewlettPackard/puppet-ilorest-module",
+	"project_page": "https://github.com/HewlettPackard/puppet-ilorest-module",
+	"issues_url": "https://github.com/HewlettPackard/puppet-ilorest-module/issues",
+	"description": "Puppet module for installing the Python iLOrest library and showcasing a few examples",
+	"tags": [
+		"python",
+		"iLOrest",
+		"hpe",
+		"redfish",
+		"restful"
+	],
+	"operatingsystems_support": [{
+		"operatingsystem": "RedHat"
+	}, {
+		"operatingsystem": "Ubuntu"
+	}, {
+		"operatingsystem": "Debian"
+	}, {
+		"operatingsystem": "Windows"
+	}],
+	"dependencies": [],
+	"data_provider": null
 }
-
