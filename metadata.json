@@ -1,6 +1,6 @@
 {
   "name": "lumbajack-ilorest",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "author": "Hewlett Packard Enterprise Development",
   "summary": "Installs and runs iLOrest examples",
   "license": "Apache-2.0",
@@ -16,8 +16,19 @@
 	"restful"
     ],
   "operatingsystems_support": [
-    {"operatingsystem": ["Windows","Debian","RHEL"]}
-    ],
+    {
+		"operatingsystem": "RedHat",
+	},
+	{
+		"operatingsystem": "Ubuntu",
+	},
+	{
+		"operatingsystem": "Debian",
+	},
+	{
+		"operatingsystem": "Windows",
+	},
+  ],
   "dependencies": [
   ],
   "data_provider": null
