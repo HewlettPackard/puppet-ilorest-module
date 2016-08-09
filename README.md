@@ -10,7 +10,7 @@ iLOrest
 Description
 ===========
 
-> iLOrest is a puppet module that installs the [Python iLOrest library] and runs a handful of examples included in the library. Currently iLOrest works with Windows Server and any ’nix distribution. iLOrest was written primarily as an example for server administrators to use as a template or basis for writing their own modules using the iLOrest library. iLOrest installs the iLOrest library as part of the installation to preserve idempotency along with managing the example scripts.
+iLOrest is a puppet module that installs the [Python iLOrest library] and runs a handful of examples included in the library. Currently iLOrest works with Windows Server and any ’nix distribution. iLOrest was written primarily as an example for server administrators to use as a template or basis for writing their own modules using the iLOrest library. iLOrest installs the iLOrest library as part of the installation to preserve idempotency along with managing the example scripts.
 
 Setup
 =====
