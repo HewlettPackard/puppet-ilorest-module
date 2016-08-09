@@ -1,6 +1,6 @@
 {
   "name": "lumbajack-ilorest",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": "Hewlett Packard Enterprise Development",
   "summary": "Installs and runs iLOrest examples",
   "license": "Apache-2.0",
@@ -10,15 +10,15 @@
   "description": "Puppet module for installing the Python iLOrest library and showcasing a few examples",
   "tags": [
     "python",
-    "ilorest",
+    "iLOrest",
     "hpe",
-    "redfish"
+    "redfish",
+	"restful"
     ],
   "operatingsystems_support": [
     {"operatingsystem": ["Windows","Debian","RHEL"]}
     ],
   "dependencies": [
-    {"name":"puppetlabs-stdlib","version_requirement":">= 1.0.0"}
   ],
   "data_provider": null
 }
