@@ -1,8 +1,11 @@
 iLOrest 
 ======
 
+[![Travis](https://img.shields.io/travis/rust-lang/rust.svg?maxAge=2592000)](https://travis-ci.org/HewlettPackard/puppet-ilorest-module)
 [![Puppet Forge](https://img.shields.io/puppetforge/v/vStone/percona.svg?maxAge=2592000)](https://forge.puppet.com/lumbajack/ilorest)
 [![GitHub license](https://img.shields.io/badge/license-Apache%202-blue.svg)](https://raw.githubusercontent.com/HewlettPackard/puppet-ilorest-module/master/LICENSE)
+[![Codacy grade](https://img.shields.io/codacy/grade/e27821fb6289410b8f58338c7e0bc686.svg?maxAge=2592000)](https://www.codacy.com/app/rexysmydog/puppet-ilorest-module)
+
 
 Description
 ===========
