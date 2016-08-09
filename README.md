@@ -22,7 +22,7 @@ Installation
 Use this command to install iLOrest:
 
 ``` sourceCode
-puppet module install puppetrest-iLOrest
+puppet module install lumbajack-ilorest
 ```
 
 On the node servers, by default, in debian distributions, the iLOrest module will install files into the iLOrest module path. (/etc/puppetlabs/code/environments/production/modules/iLOrest). In Windows, it will install into the C: drive. (C:iLOrest). In RedHat, it installs into Puppet’s module path (/etc/puppet/modules/iLOrest)
