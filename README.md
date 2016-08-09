@@ -17,8 +17,6 @@ Setup
 
 iLOrest requires an installation of Python 2.7.6+ to work. This may be installed with Stankevich’s [Python] module from the Puppet Forge. Alternatively, a pre-installed version of Python would work as well, as long as it satisfies the version 2.7.6+ requirements.
 
-**Note:** The iLOrest library was not written with Python 3’s compatability in mind. The recommended version of Python to be used is 2.7.11
-
 Installation
 ============
 
