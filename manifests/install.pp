@@ -3,7 +3,7 @@
 
 class ilorest::install {
 
-  if $osfamily == 'Debian' {
+  if $::osfamily == 'Debian' {
 
     #Create initial directory for recursive management
     #Directory containing 'ilorest' MUST EXIST!
@@ -27,7 +27,7 @@ class ilorest::install {
     }
   }
 
-    if $osfamily == 'redhat' {
+    if $::osfamily == 'redhat' {
 
     #Create initial directory for recursive management
     #Directory containing 'ilorest' MUST EXIST!
@@ -51,7 +51,7 @@ class ilorest::install {
     }
   }
 
-  if $osfamily == 'windows' {
+  if $::osfamily == 'windows' {
 
     #install Python 2.7.12
     package {'python27':

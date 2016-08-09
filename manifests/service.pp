@@ -8,7 +8,7 @@ class ilorest::service inherits ilorest {
   $ilo_username = $ilorest::ilo_username
   $ilo_password = $ilorest::ilo_password
 
-  if $osfamily == 'Debian' {
+  if $::osfamily == 'Debian' {
 
     #Setting default Exec parameters, path is designated in case environmental variables were not set
     Exec {
@@ -20,7 +20,7 @@ class ilorest::service inherits ilorest {
       }
   }
 
-    if $osfamily == 'redhat' {
+    if $::osfamily == 'redhat' {
 
     #Setting default Exec parameters, path is designated in case environmental variables were not set
     Exec {
@@ -32,7 +32,7 @@ class ilorest::service inherits ilorest {
       }
   }
 
-  if $osfamily == 'windows'{
+  if $::osfamily == 'windows'{
 
     #Setting default Exec parameters, path is designated in case environmental variables were not set
     #Two \ are required since only one is viewed as an exit character
