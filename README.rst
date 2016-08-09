@@ -1,7 +1,6 @@
-.. image:: https://img.shields.io/pypi/pyversions/python-iLOrest-library.svg?maxAge=2592000   :target: https://github.com/HewlettPackard/python-iLOrest-library
-
 iLOrest
-===========
+======
+.. image:: https://img.shields.io/pypi/pyversions/python-ilorest-library.svg?maxAge=2592000   :target: https://github.com/HewlettPackard/python-iLOrest-library
 
 .. contents:: :depth: 1
 
