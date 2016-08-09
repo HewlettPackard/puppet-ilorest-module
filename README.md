@@ -6,6 +6,19 @@ iLOrest
 [![GitHub license](https://img.shields.io/badge/license-Apache%202-blue.svg)](https://raw.githubusercontent.com/HewlettPackard/puppet-ilorest-module/master/LICENSE)
 [![Codacy grade](https://img.shields.io/codacy/grade/e27821fb6289410b8f58338c7e0bc686.svg?maxAge=2592000)](https://www.codacy.com/app/rexysmydog/puppet-ilorest-module)
 
+####Table of Contents
+
+1. [Overview](#overview)
+2. [Description](#description)
+3. [Setup](#setup)
+4. [Installation](#installation)
+5. [Usage](#usage)
+6. [Contributors](#contributors)
+
+Overview
+===========
+
+Puppet module for installing the Python iLOrest library and showcasing a few examples.
 
 Description
 ===========
@@ -52,5 +65,8 @@ node default {
     ilo_password => 'password
 ```
 
+##Contributors
+
+https://github.com/HewlettPackard/puppet-ilorest-module/graphs/contributors
   [Python iLOrest library]: https://github.com/HewlettPackard/python-iLOrest-library
   [Python]: https://forge.puppet.com/stankevich/python
