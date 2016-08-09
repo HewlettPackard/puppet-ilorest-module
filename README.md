@@ -1,4 +1,8 @@
-iLOrest ====== .. image:: <https://img.shields.io/pypi/pyversions/python-ilorest-library.svg?maxAge=2592000> :target: <https://github.com/HewlettPackard/python-iLOrest-library>
+iLOrest 
+======
+
+[![Puppet Forge](https://img.shields.io/puppetforge/v/vStone/percona.svg?maxAge=2592000)](https://forge.puppet.com/lumbajack/ilorest)
+[![GitHub license](https://img.shields.io/badge/license-Apache%202-blue.svg)](https://raw.githubusercontent.com/HewlettPackard/puppet-ilorest-module/master/LICENSE)
 
 Description
 ===========
