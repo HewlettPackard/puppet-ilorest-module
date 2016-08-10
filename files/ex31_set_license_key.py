@@ -46,7 +46,7 @@ if __name__ == "__main__":
     
         #Create a REST object
         REST_OBJ = RestObject(iLO_https_url, iLO_account, iLO_password)
-		ex31_set_license_key(REST_OBJ, "test_iLO_Key")
+	ex31_set_license_key(REST_OBJ, "test_iLO_Key")
 
     except Exception:
         sys.stderr.write("Credentials Error \n")

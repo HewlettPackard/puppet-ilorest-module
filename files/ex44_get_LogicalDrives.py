@@ -48,7 +48,7 @@ if __name__ == "__main__":
     
         #Create a REST object
         REST_OBJ = RestObject(iLO_https_url, iLO_account, iLO_password)
-		ex44_get_LogicalDrives(REST_OBJ)
+	ex44_get_LogicalDrives(REST_OBJ)
 
     except Exception:
         sys.stderr.write("Credentials Error \n")

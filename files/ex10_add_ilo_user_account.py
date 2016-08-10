@@ -56,7 +56,7 @@ if __name__ == "__main__":
     
         #Create a REST object
         REST_OBJ = RestObject(iLO_https_url, iLO_account, iLO_password)
-		ex10_add_ilo_user_account(REST_OBJ, "name", "username", "password")
+	ex10_add_ilo_user_account(REST_OBJ, "name", "username", "password")
 
     except Exception:
         sys.stderr.write("Credentials Error \n")

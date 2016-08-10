@@ -53,7 +53,7 @@ if __name__ == "__main__":
     
         #Create a REST object
         REST_OBJ = RestObject(iLO_https_url, iLO_account, iLO_password)
-		ex34_set_bios_uefi_shell_startup(REST_OBJ,"Enabled", "10.0.0.0", "test.com")
+	ex34_set_bios_uefi_shell_startup(REST_OBJ,"Enabled", "10.0.0.0", "test.com")
 
     except Exception:
         sys.stderr.write("Credentials Error \n")

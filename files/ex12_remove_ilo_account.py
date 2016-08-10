@@ -49,7 +49,7 @@ if __name__ == "__main__":
     
         #Create a REST object
         REST_OBJ = RestObject(iLO_https_url, iLO_account, iLO_password)
-		ex12_remove_ilo_account(REST_OBJ, "newname")
+	ex12_remove_ilo_account(REST_OBJ, "newname")
 
     except Exception:
         sys.stderr.write("Credentials Error \n")
