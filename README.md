@@ -53,15 +53,12 @@ Usage
 
 ``` sourceCode
 node default {
-
-  if $osfamily != 'windows' {
-    include python
-  }
-
-  class { 'iLOrest':
+  class { 'ilorest':
     ilo_ip       => '10.0.0.100',
     ilo_username => 'admin',
     ilo_password => 'password
+  }
+}
 ```
 
   [Python iLOrest library]: https://github.com/HewlettPackard/python-iLOrest-library
