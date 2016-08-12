@@ -1,4 +1,4 @@
-iLOrest 
+iLOrest Puppet Module
 ======
 
 [![Build Status](https://travis-ci.org/HewlettPackard/puppet-ilorest-module.svg?branch=master)](https://travis-ci.org/HewlettPackard/puppet-ilorest-module)
