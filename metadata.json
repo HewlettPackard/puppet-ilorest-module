@@ -1,6 +1,6 @@
 {
 	"name": "lumbajack-ilorest",
-	"version": "1.0.2",
+	"version": "1.0.3",
 	"author": "Hewlett Packard Enterprise Development",
 	"summary": "Installs and runs iLOrest examples",
 	"license": "Apache-2.0",
