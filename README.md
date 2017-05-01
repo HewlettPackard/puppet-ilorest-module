@@ -6,7 +6,7 @@ iLOrest Puppet Module
 [![GitHub license](https://img.shields.io/badge/license-Apache%202-blue.svg)](https://raw.githubusercontent.com/HewlettPackard/puppet-ilorest-module/master/LICENSE)
 [![Codacy grade](https://img.shields.io/codacy/grade/5b7b9a4eb9fa4ac2af343c0a2641202e.svg?maxAge=2592000)](https://www.codacy.com/app/rexysmydog/puppet-ilorest-module)
 
-####Table of Contents
+#### Table of Contents
 
 1. [Overview](#overview)
 2. [Description](#description)
@@ -61,5 +61,29 @@ node default {
 }
 ```
 
-  [Python iLOrest library]: https://github.com/HewlettPackard/python-iLOrest-library
-  [Python]: https://forge.puppet.com/stankevich/python
+## History
+
+* 08/19/2016: Initial Commit
+
+## License
+
+Copyright 2017 Hewlett Packard Enterprise Development LP
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+ http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+
+## Authors
+
+* [Jack Garcia](http://github.com/LumbaJack)
+* [Matthew Kocurek](http://github.com/Yergidy)
+* [Prithvi Subrahmanya](http://github.com/PrithviBS)
+
