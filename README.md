@@ -13,9 +13,9 @@ iLOrest Puppet Module
 3. [Setup](#setup)
 4. [Installation](#installation)
 5. [Usage](#usage)
-5. [History](#history)
-5. [License](#license)
-5. [Authors](#authors)
+6. [History](#history)
+7. [License](#license)
+8. [Authors](#authors)
 
 ## Overview
 
