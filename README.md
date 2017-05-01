@@ -13,24 +13,23 @@ iLOrest Puppet Module
 3. [Setup](#setup)
 4. [Installation](#installation)
 5. [Usage](#usage)
+5. [History](#history)
+5. [License](#license)
+5. [Authors](#authors)
 
-Overview
-===========
+## Overview
 
 Puppet module for installing the Python iLOrest library and showcasing a few examples.
 
-Description
-===========
+## Description
 
 iLOrest is a puppet module that installs the [Python iLOrest library] and runs a handful of examples included in the library. Currently iLOrest works with Windows Server and any ’nix distribution. iLOrest was written primarily as an example for server administrators to use as a template or basis for writing their own modules using the iLOrest library. iLOrest installs the iLOrest library as part of the installation to preserve idempotency along with managing the example scripts.
 
-Setup
-=====
+## Setup
 
 iLOrest requires an installation of Python 2.7.6+ to work. This may be installed with Stankevich’s [Python] module from the Puppet Forge. Alternatively, a pre-installed version of Python would work as well, as long as it satisfies the version 2.7.6+ requirements.
 
-Installation
-============
+## Installation
 
 Use this command to install iLOrest:
 
@@ -46,8 +45,7 @@ For a manual installtion, download this module as a zip, and unzip it in your mo
 
 **Note:** If installing manually, or from this repository, ensure the folder is named “iLOrest” so Puppet can locate the module.
 
-Usage
-=====
+## Usage
 
 **iLOrest** is used by setting your parameters in the site.pp node definitions. Here is an example of it in use as a default node definition. iLOrest is hardcoded to show off a few examples, namely examples 9, 14, and 3. Since the intent of iLOrest is to provide user with a template on how to build their own modules, the examples are hardcoded in. These examples are from the python iLOrest library and are intended to be just examples. Server admins should look into building their own scripts to meet their needs and then refer to this module for implementation using Puppet.
 
